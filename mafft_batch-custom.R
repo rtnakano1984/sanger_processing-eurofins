@@ -22,7 +22,7 @@ for(x in unique(map$template)){
 	fasta_temp <- read.FASTA(temp_path)
 
 	for(y in unique(map$primer[map$template==x])){
-		idx <- names(fasta) %in% map$results[map$primer==y]
+		idx <- names(fasta) %in% map$results[map$template==x & map$primer==y]
 		fasta_sub <- fasta[idx]
 
 		fasta_out <- c(fasta_temp, fasta_sub)
