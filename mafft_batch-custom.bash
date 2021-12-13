@@ -36,7 +36,7 @@ fi
 # mafft alignment
 files=$(ls ${dat_dir}/${ID}/*temp.fasta)
 for f in ${files}; do
-	mafft --adjustdirection --leavegappyregion --auto ${f} > ${f/temp.fasta/.fasta} &>> ${log}
+	mafft --adjustdirection --leavegappyregion --auto ${f} 1> ${f/temp.fasta/.fasta} 2>> ${log}
 	rm ${f}
 done
 
