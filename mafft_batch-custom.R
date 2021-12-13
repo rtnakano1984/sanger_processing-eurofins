@@ -21,7 +21,7 @@ for(x in unique(map$template)){
 	temp_path <- paste(dat_dir, "template/", x, sep="")
 	fasta_temp <- read.FASTA(temp_path)
 
-	for(y in unique(map$primer)){
+	for(y in unique(map$primer[map$template==x])){
 		idx <- names(fasta) %in% map$results[map$primer==y]
 		fasta_sub <- fasta[idx]
 
