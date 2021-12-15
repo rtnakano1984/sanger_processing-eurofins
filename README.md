@@ -1,6 +1,9 @@
 # sanger_processing-eurofins
 
-input fasta file(s) need to be stored in the project directory under $dat_dir but no other fasta files.  
+Usage: ./mafft_batch-custom.bash $ID  
+where $ID is the ID for the project and can be any.  
+
+input fasta file(s) need to be stored in the project directory under $dat_dir/$ID but no other fasta files. Multiple fasta files will be automatically concatenated.
 template sequences need to be stored in $dat_dir/template.
 
 map.txt should contain three tab-deliminated columns:
