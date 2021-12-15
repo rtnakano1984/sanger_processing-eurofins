@@ -1,4 +1,7 @@
 #!/netscrach/dep_psl/grp_psl/ThomasN/tools/bin/bin/Rscript
+# R script for batch-processing Sanger sequencing restuls from Eurofins
+# Associated with mafft_batch-custom.bash
+# Ryohei Thomas Nakano, PhD; nakano@mpipz.mpg.de; 15 Dec 2021
 
 library(ape)
 library(stringr)

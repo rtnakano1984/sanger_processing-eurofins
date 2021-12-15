@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # bash script for batch-processing Sanger sequencing restuls from Eurofins
+# Ryohei Thomas Nakano, PhD; nakano@mpipz.mpg.de; 15 Dec 2021
 
 # common parameters
 set -e
