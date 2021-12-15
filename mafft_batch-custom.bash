@@ -5,21 +5,22 @@
 # common parameters
 set -e
 set -o nounset
+
 dat_dir="/biodata/dep_psl/grp_psl/ThomasN/seq-results"
+RPATH="/netscratch/dep_psl/grp_psl/ThomasN/tools/bin/bin"
+
 
 # parameters
-ID=$1 # sequencing library (EUROFIN ID)
-
+ID=$1
 
 output_dir="${dat_dir}/${ID}/results"
 input_file="${output_dir}/${ID}.fasta"
-
-rm -r -f ${output_dir}
-mkdir -p ${output_dir}
-
 log="${dat_dir}/${ID}/output.text"
 
 rm -rf ${log}
+rm -r -f ${output_dir}
+mkdir -p ${output_dir}
+
 
 # prepare input
 count=$(ls ${dat_dir}/${ID}/*.fasta | wc -l)
@@ -33,11 +34,13 @@ else
 	cat ${dat_dir}/${ID}/*.fasta > ${input_file}
 fi
 
+
 # sort
-/netscratch/dep_psl/grp_psl/ThomasN/tools/bin/bin/Rscript ${dat_dir}/sort_fasta.R ${input_file}
+${RPATH}/Rscript ${dat_dir}/sort_fasta.R ${input_file}
 
 # prepare fasta files
-/netscratch/dep_psl/grp_psl/ThomasN/tools/bin/bin/Rscript ${dat_dir}/mafft_batch-custom.R ${ID}
+${RPATH}/Rscript ${dat_dir}/mafft_batch-custom.R ${ID}
+
 
 # mafft alignment
 files=$(ls ${output_dir}/*temp.fasta)
