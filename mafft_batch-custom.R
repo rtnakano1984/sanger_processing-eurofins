@@ -7,9 +7,10 @@ library(stringr)
 dat_dir <- "/biodata/dep_psl/grp_psl/ThomasN/seq-results/"
 
 ID       <- commandArgs(trailingOnly=T)[1]
+output_dir <- paste(dat_dir, ID, "/results/", sep="")
 
 #
-dat_path <- paste(dat_dir, ID, "/", ID, "-sorted.fasta", sep="")
+dat_path <- paste(output_dir, ID, "-sorted.fasta", sep="")
 fasta <- read.FASTA(dat_path)
 
 map_path <- paste(dat_dir, ID, "/map.txt", sep="")
@@ -26,6 +27,6 @@ for(x in unique(map$template)){
 		fasta_sub <- fasta[idx]
 
 		fasta_out <- c(fasta_temp, fasta_sub)
-		write.FASTA(fasta_out, file=paste(dat_dir, ID, "/", str_replace(x, ".fasta", ""), "-", y, "temp.fasta", sep=""))
+		write.FASTA(fasta_out, file=paste(output_dir, str_replace(x, ".fasta", ""), "-", y, "temp.fasta", sep=""))
 	}
 }
