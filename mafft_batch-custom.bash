@@ -36,10 +36,7 @@ else
 fi
 
 
-# sort
-${RPATH}/Rscript ${dat_dir}/sort_fasta.R ${input_file}
-
-# prepare fasta files
+# sort and prepare fasta files
 ${RPATH}/Rscript ${dat_dir}/mafft_batch-custom.R ${ID}
 
 

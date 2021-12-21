@@ -12,13 +12,18 @@ dat_dir <- "/biodata/dep_psl/grp_psl/ThomasN/seq-results/"
 ID       <- commandArgs(trailingOnly=T)[1]
 output_dir <- paste(dat_dir, ID, "/results/", sep="")
 
-#
-dat_path <- paste(output_dir, ID, "-sorted.fasta", sep="")
+# load data
+dat_path <- paste(output_dir, ID, ".fasta", sep="")
 fasta <- read.FASTA(dat_path)
 
 map_path <- paste(dat_dir, ID, "/map.txt", sep="")
 map <- read.table(map_path, header=F, sep="\t", col.names=c("results", "primer", "template"), stringsAsFactors=F, row.names=NULL)
 map$results <- sapply(map$results, function(x) paste(x, x, sep="_"))
+
+# sort
+idx <- match(map$results, names(fasta))
+fasta <- fasta[idx]
+
 
 #
 for(x in unique(map$template)){
